@@ -17,10 +17,14 @@ public class bullet_shoot : MonoBehaviour
     //5 for strong.fire, 6 for strong.wind , 7 for strong.earth , 8 for strong .ice
     public int ElementType = 1;
     //mutiple/ground/explosion
-    public int OnHitType =1;
+    public int OnHitType = 1;
     //1 for melee, 2 for range
-    public int AttackForm=2;
+    public int AttackForm = 2;
     public float distance = 0;
+    private float GothrowDistance = 0;
+    [Header("上一步")]
+    public  Vector3 LastPosition;
+    
     void Start()
     {
         
@@ -49,7 +53,10 @@ public class bullet_shoot : MonoBehaviour
         m_bullet.GetComponent<Rigidbody2D>().velocity = vec_bullet * bulletspeed;
         m_bullet.transform.eulerAngles = new Vector3(0, 0, m_fireangle);
     }
-    void MutipleBulletShot()
+    /// <summary>
+    /// 3 muti
+    /// </summary>
+    void MutipleBulletShot3()
     {
         distance = 0;
         Vector3 m_mouseposition = Input.mousePosition;
@@ -60,8 +67,8 @@ public class bullet_shoot : MonoBehaviour
         if (m_mouseposition.x > this.transform.position.x)
         { m_fireangle = -m_fireangle; }
         Vector3 vec_bullet = (m_mouseposition - transform.position).normalized;
-        Vector3 vec_bullet2 = (Quaternion.Euler(0, 0, 20) * (m_mouseposition - this.transform.position)).normalized;
-        Vector3 vec_bullet3 = (Quaternion.Euler(0, 0, -20) * (m_mouseposition - this.transform.position)).normalized;
+        Vector3 vec_bullet2 = (Quaternion.Euler(0, 0, 30) * (m_mouseposition - this.transform.position)).normalized;
+        Vector3 vec_bullet3 = (Quaternion.Euler(0, 0, -30) * (m_mouseposition - this.transform.position)).normalized;
         distance = (m_mouseposition - transform.position - offset_scale * vec_bullet).magnitude;
 
         GameObject m_bullet = Instantiate(Bullet, transform.position + offset_scale * vec_bullet, Quaternion.identity) as GameObject;
@@ -70,11 +77,54 @@ public class bullet_shoot : MonoBehaviour
 
         GameObject m_bullet2 = Instantiate(Bullet, transform.position + offset_scale * vec_bullet2, Quaternion.identity) as GameObject;
         m_bullet2.GetComponent<Rigidbody2D>().velocity = vec_bullet2 * bulletspeed;
-        m_bullet2.transform.eulerAngles = new Vector3(0, 0, m_fireangle);
+        m_bullet2.transform.eulerAngles = new Vector3(0, 0, m_fireangle+30);
+        
+        
 
         GameObject m_bullet3 = Instantiate(Bullet, transform.position + offset_scale * vec_bullet3, Quaternion.identity) as GameObject;
         m_bullet3.GetComponent<Rigidbody2D>().velocity = vec_bullet3 * bulletspeed;
-        m_bullet3.transform.eulerAngles = new Vector3(0, 0, m_fireangle);
+        m_bullet3.transform.eulerAngles = new Vector3(0, 0, m_fireangle-30);
+    }
+
+    void MutipleBulletShot5()
+    {
+        distance = 0;
+        Vector3 m_mouseposition = Input.mousePosition;
+        m_mouseposition = Camera.main.ScreenToWorldPoint(m_mouseposition);
+        m_mouseposition.z = 0;
+        //distance = (m_mouseposition - this.transform.position).magnitude;
+        float m_fireangle = Vector2.Angle(m_mouseposition - this.transform.position, Vector2.up);
+        if (m_mouseposition.x > this.transform.position.x)
+        { m_fireangle = -m_fireangle; }
+        Vector3 vec_bullet = (m_mouseposition - transform.position).normalized;
+        Vector3 vec_bullet2 = (Quaternion.Euler(0, 0, 30) * (m_mouseposition - this.transform.position)).normalized;
+        Vector3 vec_bullet3 = (Quaternion.Euler(0, 0, -30) * (m_mouseposition - this.transform.position)).normalized;
+        Vector3 vec_bullet4 = (Quaternion.Euler(0, 0, 60) * (m_mouseposition - this.transform.position)).normalized;
+        Vector3 vec_bullet5 = (Quaternion.Euler(0, 0, -60) * (m_mouseposition - this.transform.position)).normalized;
+
+        distance = (m_mouseposition - transform.position - offset_scale * vec_bullet).magnitude;
+
+        GameObject m_bullet = Instantiate(Bullet, transform.position + offset_scale * vec_bullet, Quaternion.identity) as GameObject;
+        m_bullet.GetComponent<Rigidbody2D>().velocity = vec_bullet * bulletspeed;
+        m_bullet.transform.eulerAngles = new Vector3(0, 0, m_fireangle);
+
+        GameObject m_bullet2 = Instantiate(Bullet, transform.position + offset_scale * vec_bullet2, Quaternion.identity) as GameObject;
+        m_bullet2.GetComponent<Rigidbody2D>().velocity = vec_bullet2 * bulletspeed;
+        m_bullet2.transform.eulerAngles = new Vector3(0, 0, m_fireangle + 30);
+
+        GameObject m_bullet3 = Instantiate(Bullet, transform.position + offset_scale * vec_bullet3, Quaternion.identity) as GameObject;
+        m_bullet3.GetComponent<Rigidbody2D>().velocity = vec_bullet3 * bulletspeed;
+        m_bullet3.transform.eulerAngles = new Vector3(0, 0, m_fireangle - 30);
+
+        GameObject m_bullet4 = Instantiate(Bullet, transform.position + offset_scale * vec_bullet4, Quaternion.identity) as GameObject;
+        m_bullet4.GetComponent<Rigidbody2D>().velocity = vec_bullet4 * bulletspeed;
+        m_bullet4.transform.eulerAngles = new Vector3(0, 0, m_fireangle + 60);
+
+        GameObject m_bullet5 = Instantiate(Bullet, transform.position + offset_scale * vec_bullet5, Quaternion.identity) as GameObject;
+        m_bullet5.GetComponent<Rigidbody2D>().velocity = vec_bullet5 * bulletspeed;
+        m_bullet5.transform.eulerAngles = new Vector3(0, 0, m_fireangle - 60);
+
+
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -82,32 +132,45 @@ public class bullet_shoot : MonoBehaviour
         PrepareShoot();
         if (shootable == true)
         {
-            if (AttackType == 1)
+            if (AttackForm == 2)
             {
-                Bullet = Resources.Load("swipe_bullet", typeof(GameObject)) as GameObject;
-                if (Input.GetMouseButton(0))
-                { MutipleBulletShot(); m_nextfire = 0; }
-            }
-            if (AttackType == 2)
-            {
-                Bullet = Resources.Load("penetrate_bullet", typeof(GameObject)) as GameObject;
-                if (Input.GetMouseButton(0))
-                { SingleBulletShot(); m_nextfire = 0; }
-            }
-            if (AttackType == 3)
-            {
-                Bullet = Resources.Load("bouncing_bullet", typeof(GameObject)) as GameObject;
-                if (Input.GetMouseButton(0))
-                { SingleBulletShot(); m_nextfire = 0; }
-                
-            }
-            if (AttackType == 4)
-            {
-                Bullet = Resources.Load("throwing_bullet", typeof(GameObject)) as GameObject;
-                if (Input.GetMouseButton(0))
-                { SingleBulletShot(); m_nextfire = 0; }
-            }
+                firerate = 1.0f;
+                if (AttackType == 1)
+                {
+                    Bullet = Resources.Load("swipe_bullet", typeof(GameObject)) as GameObject;
+                    if (Input.GetMouseButton(0))
+                    { MutipleBulletShot3(); m_nextfire = 0; }
+                }
+                if (AttackType == 2)
+                {
+                    Bullet = Resources.Load("penetrate_bullet", typeof(GameObject)) as GameObject;
+                    if (Input.GetMouseButton(0))
+                    { SingleBulletShot(); m_nextfire = 0; }
+                }
+                if (AttackType == 3)
+                {
+                    Bullet = Resources.Load("bouncing_bullet", typeof(GameObject)) as GameObject;
+                    if (Input.GetMouseButton(0))
+                    { SingleBulletShot(); m_nextfire = 0; }
 
+                }
+                if (AttackType == 4)
+                {
+                    Bullet = Resources.Load("throwing_bullet", typeof(GameObject)) as GameObject;
+                    if (Input.GetMouseButton(0))
+                    { SingleBulletShot(); m_nextfire = 0; }
+                }
+            }
+            if (AttackForm == 1)
+            {
+                if (AttackType == 1)
+                {
+                    Bullet = Resources.Load("swipe_melee", typeof(GameObject)) as GameObject;
+                    if (Input.GetMouseButton(0))
+                    { MutipleBulletShot5(); m_nextfire = 0; }
+                }
+
+            }
         }
     }
 }

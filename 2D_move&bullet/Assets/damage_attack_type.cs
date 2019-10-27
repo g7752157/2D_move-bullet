@@ -11,6 +11,10 @@ public class damage_attack_type : MonoBehaviour
     public int BulletElementType;
     public double BasicDamage = 1;
     public GameObject OnHit;
+    [Header("上一步位置")]
+    public Vector3 LastPosition;
+    public float MovedDistance;
+    
     //vector for player(fire/wind/earth/ice) , element for Enemy(fire/wind/earth/ice/s.fire/s.wind/s.earth/s.ice)
     public double[,] ElementChart = { {0.5,1.5,1,1,0,2,0.75,0.75 },
                                       {1,0.5,1.5,1,0.75,0,2,0.75 },
@@ -27,12 +31,15 @@ public class damage_attack_type : MonoBehaviour
         BulletElementType = GameObject.Find("character").GetComponent<bullet_shoot>().ElementType;
         BulletAttackForm = GameObject.Find("character").GetComponent<bullet_shoot>().AttackForm;
         BulletOnHitType = GameObject.Find("character").GetComponent<bullet_shoot>().OnHitType;
+        LastPosition = gameObject.GetComponent<Transform>().position;
+        MovedDistance = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        MovedDistance += (transform.position - LastPosition).magnitude;
+        LastPosition = transform.position;
     }
     void OnTriggerEnter2D(Collider2D col)
     {
