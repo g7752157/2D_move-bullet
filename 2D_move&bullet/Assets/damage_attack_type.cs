@@ -58,9 +58,14 @@ public class damage_attack_type : MonoBehaviour
                 OnHit = Instantiate(Resources.Load("mutiple"), gameObject.transform.position, Quaternion.identity) as GameObject;
                 OnHit.GetComponent<damage_attack_onhit>().BulletOnHitType = BulletOnHitType;
                 OnHit.GetComponent<damage_attack_onhit>().BulletElementType = BulletElementType;
-
+            }
+            if (BulletOnHitType == 2)//for ground
+            {
+                    OnHit = Instantiate(Resources.Load("ground"), gameObject.transform.position, Quaternion.identity) as GameObject;
+                    OnHit.GetComponent<damage_attack_onhit>().BulletOnHitType = BulletOnHitType;
+                    OnHit.GetComponent<damage_attack_onhit>().BulletElementType = BulletElementType;
             }
 
-        }
+            }
     }
 }
