@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1719061640287548001}
   m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 6.05, y: -0.63, z: 0}
-  m_LocalScale: {x: 0.19378501, y: 0.19378501, z: 0.19378501}
+  m_LocalScale: {x: 0.109682314, y: 0.3878696, z: 0.19378501}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -177,6 +177,11 @@ MonoBehaviour:
   BulletOnHitType: 0
   BulletElementType: 0
   BasicDamage: 1
+  OnHit: {fileID: 0}
+  LastPosition: {x: 0, y: 0, z: 0}
+  MovedDistance: 0
+  char_to_bullet: {x: 0, y: 0, z: 0}
+  timer: 0
   OnHitChart:
   - 0.5
   - 0.5

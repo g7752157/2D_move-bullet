@@ -21,9 +21,9 @@ public class bullet_shoot : MonoBehaviour
     //1 for melee, 2 for range
     public int AttackForm = 2;
     public float distance = 0;
-    private float GothrowDistance = 0;
-    [Header("上一步")]
-    public  Vector3 LastPosition;
+    
+    
+    
     
     void Start()
     {
@@ -163,12 +163,41 @@ public class bullet_shoot : MonoBehaviour
             }
             if (AttackForm == 1)
             {
+                //melee swipe
                 if (AttackType == 1)
                 {
+                    firerate = 0.1f;
                     Bullet = Resources.Load("swipe_melee", typeof(GameObject)) as GameObject;
                     if (Input.GetMouseButton(0))
                     { MutipleBulletShot5(); m_nextfire = 0; }
                 }
+                //melee penetrate
+                if (AttackType == 2)
+                {
+                    firerate = 0.5f;
+                    Bullet = Resources.Load("penetrate_melee", typeof(GameObject)) as GameObject;
+                    if (Input.GetMouseButton(0))
+                    { SingleBulletShot(); m_nextfire = 0; }
+                }
+
+                //melee bouncing
+                if (AttackType == 3)
+                {
+                    firerate = 0.1f;
+                    Bullet = Resources.Load("bouncing_melee", typeof(GameObject)) as GameObject;
+                    if (Input.GetMouseButton(0))
+                    { SingleBulletShot(); m_nextfire = 0; }
+                }
+
+                //melee throw
+                if (AttackType == 4)
+                {
+                    firerate = 0.1f;
+                    Bullet = Resources.Load("throwing_melee", typeof(GameObject)) as GameObject;
+                    if (Input.GetMouseButton(0))
+                    { SingleBulletShot(); m_nextfire = 0; }
+                }
+
 
             }
         }

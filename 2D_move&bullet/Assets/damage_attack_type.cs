@@ -14,6 +14,8 @@ public class damage_attack_type : MonoBehaviour
     [Header("上一步位置")]
     public Vector3 LastPosition;
     public float MovedDistance;
+    public Vector3 char_to_bullet;
+    public float timer;
     
     //vector for player(fire/wind/earth/ice) , element for Enemy(fire/wind/earth/ice/s.fire/s.wind/s.earth/s.ice)
     public double[,] ElementChart = { {0.5,1.5,1,1,0,2,0.75,0.75 },
@@ -27,19 +29,54 @@ public class damage_attack_type : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timer = 0;
         BulletAttackType = GameObject.Find("character").GetComponent<bullet_shoot>().AttackType;
         BulletElementType = GameObject.Find("character").GetComponent<bullet_shoot>().ElementType;
         BulletAttackForm = GameObject.Find("character").GetComponent<bullet_shoot>().AttackForm;
         BulletOnHitType = GameObject.Find("character").GetComponent<bullet_shoot>().OnHitType;
-        LastPosition = gameObject.GetComponent<Transform>().position;
+        LastPosition = transform.position;
         MovedDistance = 0;
+        char_to_bullet=transform.position-GameObject.Find("character").GetComponent<Transform>().position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //timer
+        timer += Time.deltaTime;
+        //move distance
         MovedDistance += (transform.position - LastPosition).magnitude;
         LastPosition = transform.position;
+        //melee bullet destroy when > distance
+        if (BulletAttackForm == 1 )
+        {
+            if(BulletAttackType==1)
+            { if (MovedDistance > 1) { Destroy(gameObject); } }
+        }
+        //melee penetrate
+        if (BulletAttackForm == 1)
+        {
+            float SwitchTimer=0.1f;
+            float DestroyTimer = 2.0f;
+            float SlowVelocity=0.1f;
+            float FastVelocity = 10.0f;
+            
+            if (BulletAttackType == 2)
+            { if (timer < SwitchTimer)
+                {
+                    GetComponent<Rigidbody2D>().velocity=SlowVelocity* GetComponent<Rigidbody2D>().velocity.normalized;
+                    transform.position = GameObject.Find("character").GetComponent<Transform>().position + char_to_bullet;
+                }
+            
+            
+
+                if (timer > SwitchTimer)
+                { GetComponent<Rigidbody2D>().velocity = FastVelocity * GetComponent<Rigidbody2D>().velocity.normalized; }
+                if (timer > DestroyTimer) { Destroy(gameObject); }
+
+                
+            }
+        }
     }
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -73,6 +110,6 @@ public class damage_attack_type : MonoBehaviour
                     OnHit.GetComponent<damage_attack_onhit>().BulletElementType = BulletElementType;
             }
 
-            }
+        }
     }
 }

@@ -10,16 +10,24 @@ public class throwing_bullet : MonoBehaviour
     public float D;
     public float LifeTime = 100;
     public float Vy = 15;
-    public float gravity = 10;
+    public float gravity;
     public float t = 0;
     public Collider2D col;
+    public int form;
 
     //gameObject.GetComponent<velocity>().VelocityScale
     void Start()
     {
+        form = gameObject.GetComponent<damage_attack_type>().BulletAttackForm;
+        if (form == 1) { gravity = 50.0f; }
+        if (form == 2) { gravity = 25.0f; }
         col =gameObject.GetComponent<Collider2D>();
         col.enabled=!col.enabled;
         D = GameObject.Find("character").GetComponent<bullet_shoot>().distance;
+        if (form == 1)
+        {
+            if (D >= 1) { D = 1f; }
+        }
         LifeTime = 2*Vy/gravity;
         gameObject.GetComponent<velocity>().VelocityScale = D / LifeTime;
 
@@ -38,6 +46,7 @@ public class throwing_bullet : MonoBehaviour
                 attacked += 1;
             }
         }
+        if (height < -0.5) { Destroy(gameObject); }
     }
     void OnTriggerEnter2D(Collider2D col2)
     {

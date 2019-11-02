@@ -9,6 +9,9 @@ public class bouncying_bullet_hit : MonoBehaviour
     public Collider2D[] cols;
     //public Collider2D LastHitEnemy;
     public string LastHitEnemyName = null;
+    public Vector3 lastposition;
+    public float MoveDistance;
+    public float form;
     
 
     // Start is called before the first frame update
@@ -16,14 +19,17 @@ public class bouncying_bullet_hit : MonoBehaviour
 
     void Start()
     {
-        
+        form = gameObject.GetComponent<damage_attack_type>().BulletAttackForm;
+        MoveDistance = 0;
+        lastposition = gameObject.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-            }
+        MoveDistance += (gameObject.transform.position - lastposition).magnitude;
+        if (form == 1) { if (MoveDistance > 1) { Destroy(gameObject); } }
+    }
     void OnTriggerEnter2D(Collider2D col)
     {
         
@@ -65,6 +71,7 @@ public class bouncying_bullet_hit : MonoBehaviour
         {
 
             BulletLife -= 1;
+            MoveDistance = 0;
         }
         if (BulletLife <= 0)
         { Destroy(this.gameObject); }
