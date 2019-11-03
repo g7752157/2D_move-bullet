@@ -16,6 +16,7 @@ public class damage_attack_type : MonoBehaviour
     public float MovedDistance;
     public Vector3 char_to_bullet;
     public float timer;
+    public Collider2D col;
     
     //vector for player(fire/wind/earth/ice) , element for Enemy(fire/wind/earth/ice/s.fire/s.wind/s.earth/s.ice)
     public double[,] ElementChart = { {0.5,1.5,1,1,0,2,0.75,0.75 },
@@ -29,6 +30,8 @@ public class damage_attack_type : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        col = GetComponent<Collider2D>();
+        col.enabled = false;
         timer = 0;
         BulletAttackType = GameObject.Find("character").GetComponent<bullet_shoot>().AttackType;
         BulletElementType = GameObject.Find("character").GetComponent<bullet_shoot>().ElementType;
@@ -37,6 +40,9 @@ public class damage_attack_type : MonoBehaviour
         LastPosition = transform.position;
         MovedDistance = 0;
         char_to_bullet=transform.position-GameObject.Find("character").GetComponent<Transform>().position;
+        if (BulletAttackType != 4)
+        { col.enabled = true; }
+
     }
 
     // Update is called once per frame

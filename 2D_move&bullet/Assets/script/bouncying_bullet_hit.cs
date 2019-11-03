@@ -61,7 +61,10 @@ public class bouncying_bullet_hit : MonoBehaviour
                 radius += 1;
 
             }
-            return null;
+            //destroy if no target
+            Destroy(gameObject);
+            
+            return transform;
         }
         Transform EnemyPosition = OnGetEmemy();
 

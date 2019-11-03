@@ -92,10 +92,10 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9096871533220502332}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -154,6 +154,7 @@ MonoBehaviour:
   MovedDistance: 0
   char_to_bullet: {x: 0, y: 0, z: 0}
   timer: 0
+  collider: {fileID: 0}
   OnHitChart:
   - 0.5
   - 0.5
