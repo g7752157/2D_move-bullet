@@ -8,6 +8,7 @@ TagManager:
   - Penetrate_Bullet
   - Enemy
   - Wall
+  - GroundEnemy
   layers:
   - Default
   - TransparentFX

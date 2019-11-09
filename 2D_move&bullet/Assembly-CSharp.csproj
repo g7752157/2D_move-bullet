@@ -65,6 +65,8 @@
     <Compile Include="Assets\damage_attack_onhit.cs" />
     <Compile Include="Assets\damage_attack_type.cs" />
     <Compile Include="Assets\enemy_satus.cs" />
+    <Compile Include="Assets\GroundEnemy.cs" />
+    <Compile Include="Assets\GroupEnemy.cs" />
     <Compile Include="Assets\position.cs" />
     <Compile Include="Assets\script\bouncying_bullet_hit.cs" />
     <Compile Include="Assets\script\bullet_shoot.cs" />
@@ -74,38 +76,39 @@
     <Compile Include="Assets\script\swipe_bullet_hit.cs" />
     <Compile Include="Assets\script\throwing_bullet.cs" />
     <Compile Include="Assets\script\velocity.cs" />
+    <Compile Include="Assets\shield.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/user/Documents/GitHub/2D_move-bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/unity projects/2D_move&amp;bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/user/Documents/GitHub/2D_move-bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/unity projects/2D_move&amp;bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/user/Documents/GitHub/2D_move-bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/unity projects/2D_move&amp;bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/user/Documents/GitHub/2D_move-bullet/2D_move&amp;bullet/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/unity projects/2D_move&amp;bullet/2D_move&amp;bullet/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/user/Documents/GitHub/2D_move-bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/unity projects/2D_move&amp;bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/user/Documents/GitHub/2D_move-bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/unity projects/2D_move&amp;bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/user/Documents/GitHub/2D_move-bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/unity projects/2D_move&amp;bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>C:/Users/user/Documents/GitHub/2D_move-bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>D:/unity projects/2D_move&amp;bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>C:/Users/user/Documents/GitHub/2D_move-bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>D:/unity projects/2D_move&amp;bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/user/Documents/GitHub/2D_move-bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/unity projects/2D_move&amp;bullet/2D_move&amp;bullet/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/user/Documents/GitHub/2D_move-bullet/2D_move&amp;bullet/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/unity projects/2D_move&amp;bullet/2D_move&amp;bullet/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

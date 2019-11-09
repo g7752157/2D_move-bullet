@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5150112704074525121}
   m_Layer: 0
   m_Name: swipe_melee
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,6 +125,9 @@ MonoBehaviour:
   OnHit: {fileID: 0}
   LastPosition: {x: 0, y: 0, z: 0}
   MovedDistance: 0
+  char_to_bullet: {x: 0, y: 0, z: 0}
+  timer: 0
+  col: {fileID: 0}
   OnHitChart:
   - 0.5
   - 0.5

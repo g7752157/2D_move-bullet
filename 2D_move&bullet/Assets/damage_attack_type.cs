@@ -93,6 +93,12 @@ public class damage_attack_type : MonoBehaviour
                 -= BasicDamage * AttackTypeChart[ BulletAttackForm-1  , BulletAttackType-1]
                   *ElementChart[BulletElementType-1,col.GetComponent<enemy_satus>().EnemyElementType-1];
         }
+        if (col.tag == "GroundEnemy" & BulletAttackType == 4)
+        {
+            col.GetComponent<enemy_satus>().EnemyHp
+                -= BasicDamage * AttackTypeChart[BulletAttackForm - 1, BulletAttackType - 1]
+                  * ElementChart[BulletElementType - 1, col.GetComponent<enemy_satus>().EnemyElementType - 1];
+        }
         //OnHitting
         if (col.tag == "Enemy")
         {
@@ -116,6 +122,28 @@ public class damage_attack_type : MonoBehaviour
                     OnHit.GetComponent<damage_attack_onhit>().BulletElementType = BulletElementType;
             }
 
+        }
+        if (col.tag == "GroundEnemy" & BulletAttackType == 4)
+        {
+            if (BulletOnHitType == 3)//for explosion
+            {
+                OnHit = Instantiate(Resources.Load("explosion"), gameObject.transform.position, Quaternion.identity) as GameObject;
+                OnHit.GetComponent<damage_attack_onhit>().BulletOnHitType = BulletOnHitType;
+                OnHit.GetComponent<damage_attack_onhit>().BulletElementType = BulletElementType;
+
+            }
+            if (BulletOnHitType == 1)//for mutiple
+            {
+                OnHit = Instantiate(Resources.Load("mutiple"), gameObject.transform.position, Quaternion.identity) as GameObject;
+                OnHit.GetComponent<damage_attack_onhit>().BulletOnHitType = BulletOnHitType;
+                OnHit.GetComponent<damage_attack_onhit>().BulletElementType = BulletElementType;
+            }
+            if (BulletOnHitType == 2)//for ground
+            {
+                OnHit = Instantiate(Resources.Load("ground"), gameObject.transform.position, Quaternion.identity) as GameObject;
+                OnHit.GetComponent<damage_attack_onhit>().BulletOnHitType = BulletOnHitType;
+                OnHit.GetComponent<damage_attack_onhit>().BulletElementType = BulletElementType;
+            }
         }
     }
 }

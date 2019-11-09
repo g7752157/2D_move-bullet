@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -6171793819417306934}
   m_Layer: 0
   m_Name: bouncing_bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,6 +160,9 @@ MonoBehaviour:
   BulletLife: 3
   cols: []
   LastHitEnemyName: 
+  lastposition: {x: 0, y: 0, z: 0}
+  MoveDistance: 0
+  form: 0
 --- !u!114 &-6171793819417306934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +185,7 @@ MonoBehaviour:
   MovedDistance: 0
   char_to_bullet: {x: 0, y: 0, z: 0}
   timer: 0
+  col: {fileID: 0}
   OnHitChart:
   - 0.5
   - 0.5
