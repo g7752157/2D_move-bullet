@@ -9,7 +9,7 @@ public class damage_attack_type : MonoBehaviour
     public int BulletAttackType;
     public int BulletOnHitType;
     public int BulletElementType;
-    public double BasicDamage = 1;
+    public float BasicDamage = 1;
     public GameObject OnHit;
     [Header("上一步位置")]
     public Vector3 LastPosition;
@@ -19,14 +19,14 @@ public class damage_attack_type : MonoBehaviour
     public Collider2D col;
     
     //vector for player(fire/wind/earth/ice) , element for Enemy(fire/wind/earth/ice/s.fire/s.wind/s.earth/s.ice)
-    public double[,] ElementChart = { {0.5,1.5,1,1,0,2,0.75,0.75 },
-                                      {1,0.5,1.5,1,0.75,0,2,0.75 },
-                                      {1,1,0.5,1.5,0.75,0.75,0,2 },
-                                      {1.5,1,1,0.5,2,0.75,0.75,0 } };
+    public float[,] ElementChart = { {0.5f,1.5f,1,1,0,2,0.75f,0.75f },
+                                      {1,0.5f,1.5f,1,0.75f,0,2,0.75f },
+                                      {1,1,0.5f,1.5f,0.75f,0.75f,0,2 },
+                                      {1.5f,1,1,0.5f,2,0.75f,0.75f,0 } };
     //vector for Form(melee/range), element for Type(swipe,penetrate,bouncing,throwing)
-    public double[,] AttackTypeChart = { {1,1,1,1 }, { 0.8, 1.2, 0.8, 3 } };
+    public float[,] AttackTypeChart = { {1,1,1,1 }, { 0.8f, 1.2f, 0.8f, 3 } };
     //mutiple/ground/explosion
-    public double[] OnHitChart = { 0.5, 0.5, 0.8 };
+    public float[] OnHitChart = { 0.5f, 0.5f, 0.8f };
     // Start is called before the first frame update
     void Start()
     {
