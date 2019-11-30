@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6a752fbe1640a449cf5b92be394f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyMaxHp: 10
+  EnemyMaxHp: 2
   EnemyHp: 10
   EnemyElementType: 1
 --- !u!114 &3438441089554972166

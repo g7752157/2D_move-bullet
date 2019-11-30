@@ -48,7 +48,7 @@ public class ShieldHealth : MonoBehaviour
         Vector2 TargeP = Camera.main.WorldToScreenPoint(Target.transform.position);
         Health.GetComponent<RectTransform>().position = TargeP + Vector2.up * offsetY + Vector2.left * offsetX;
         HealthUnder.GetComponent<RectTransform>().position = TargeP + Vector2.up * offsetY + Vector2.left * offsetX;
-        CleanHpbar();
+       // CleanHpbar();
     }
     #endregion
 

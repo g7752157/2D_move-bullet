@@ -13,12 +13,16 @@ public class enemy_satus : MonoBehaviour
     void Start()
     {
         EnemyHp = EnemyMaxHp;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         if (EnemyHp<=0)
-        { Destroy(gameObject); }
+        {
+            Destroy(gameObject.GetComponent<ShieldHealth>().Health);
+            Destroy(gameObject.GetComponent<ShieldHealth>().HealthUnder);
+            Destroy(gameObject); }
     }
 }

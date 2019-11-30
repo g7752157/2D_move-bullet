@@ -37,6 +37,8 @@ public class Enemy_AI : MonoBehaviour
     #region 事件
     void Start()
     {
+        playerUnit = GameObject.Find("character");
+        player = playerUnit.transform;
         //保存初始位置
         begin = gameObject.GetComponent<Transform>().position;
         //隨機狀態
@@ -62,7 +64,7 @@ public class Enemy_AI : MonoBehaviour
             case MonsterState.Walk:
                 Vector3 vec = (player.position - transform.position).normalized;
                 //Vector3 vec =new Vector3 (Mathf.Sin(Mathf.Deg2Rad*transform.rotation.z), Mathf.Cos(Mathf.Deg2Rad * transform.rotation.z), 0) ;
-                Debug.Log(vec);
+                //Debug.Log(vec);
                 transform.Translate(vec * Time.deltaTime * walkSpeed , 0);
                 //self.rotation = Quaternion.Slerp(self.rotation, targetRotation, turnSpeed);
                 //Debug.Log("圓形");
@@ -116,7 +118,7 @@ public class Enemy_AI : MonoBehaviour
         {
             currentState = MonsterState.Walk;
             //targetRotation = Quaternion.Euler(0, 0, Random.Range(1, 5) * 90);
-
+            
         }
     }
 
