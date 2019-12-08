@@ -406,7 +406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &808351926
 Transform:
   m_ObjectHideFlags: 0
@@ -952,6 +952,7 @@ GameObject:
   - component: {fileID: 1953447104}
   - component: {fileID: 1953447103}
   - component: {fileID: 1953447108}
+  - component: {fileID: 1953447109}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -1110,6 +1111,27 @@ MonoBehaviour:
   OnHitType: 3
   AttackForm: 2
   distance: 0
+--- !u!114 &1953447109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953447102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0414853969134f43affb9757b4627e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterHP: 0
+  characterWeapon: 0
+  CharacterRUNE: 0
+  hittenDmg: 0
+  hittableTimer: 0
+  InvincibleTime: 0
+  spriteTimer: 0
+  isHit: 0
+  hittable: 0
 --- !u!1 &2008715795
 GameObject:
   m_ObjectHideFlags: 0

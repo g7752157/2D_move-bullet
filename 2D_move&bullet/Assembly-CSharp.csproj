@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Character_Status.cs" />
     <Compile Include="Assets\damage_attack_onhit.cs" />
     <Compile Include="Assets\damage_attack_type.cs" />
     <Compile Include="Assets\enemy_satus.cs" />
