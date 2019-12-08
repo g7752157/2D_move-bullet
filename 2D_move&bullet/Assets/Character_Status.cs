@@ -6,7 +6,7 @@ public class Character_Status : MonoBehaviour
 {
     #region [欄位]
     [Range(0,100)]
-    public float characterHP,characterWeapon,CharacterRUNE,hittenDmg,hittableTimer, InvincibleTime, spriteTimer = 0;
+    public float characterHP,characterWeaponRange, characterWeaponMelee, CharacterRUNE,hittenDmg,hittableTimer, InvincibleTime, spriteTimer = 0;
 
     public bool isHit,hittable;
 
@@ -19,8 +19,9 @@ public class Character_Status : MonoBehaviour
         hittableTimer = 0;
         hittenDmg = 10;
         characterHP = 100;
-        characterWeapon = 100;
-        CharacterRUNE = 100;
+        characterWeaponMelee = 100;
+        characterWeaponRange = 100;
+        CharacterRUNE = 0;
         isHit = false;
         hittable = true;
     }

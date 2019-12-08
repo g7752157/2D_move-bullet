@@ -5,6 +5,7 @@ using UnityEngine;
 public class Respawner : MonoBehaviour
 {
     public Vector3[] pos = new Vector3[8];
+    public GameObject back;
     public GameObject[] EnemyList = new GameObject[10];
     public float timer;
     public int wave, level;
@@ -47,6 +48,7 @@ public class Respawner : MonoBehaviour
         Respawn();
         Debug.Log("EnemyCount = " + WaveEnemyCount(AllEnemy));
         if (WaveEnemyCount(AllEnemy) == 0) { SwitchWave(); };
+        BackGroundMove(back);
         
     }
 
@@ -197,5 +199,12 @@ public class Respawner : MonoBehaviour
             return c;
         }
         return 100;
+    }
+
+    void BackGroundMove(GameObject back)
+    {
+        back = GameObject.Find("background");
+
+        back.transform.position = Vector3.MoveTowards(new Vector3(0, -10*(level-2), 0),  new Vector3(0, -10*(level-1), 0), 10);
     }
 }

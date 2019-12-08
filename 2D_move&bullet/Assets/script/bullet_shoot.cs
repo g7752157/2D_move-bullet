@@ -130,7 +130,7 @@ public class bullet_shoot : MonoBehaviour
     void FixedUpdate()
     {
         PrepareShoot();
-        if (shootable == true)
+        if (shootable == true && Input.GetMouseButton(0))
         {
             if (AttackForm == 2)
             {
@@ -138,28 +138,38 @@ public class bullet_shoot : MonoBehaviour
                 if (AttackType == 1)
                 {
                     Bullet = Resources.Load("swipe_bullet", typeof(GameObject)) as GameObject;
-                    if (Input.GetMouseButton(0))
-                    { MutipleBulletShot3(); m_nextfire = 0; }
+                    if (WeaponCheckRange())
+                    { MutipleBulletShot3(); m_nextfire = 0;  }
                 }
                 if (AttackType == 2)
                 {
                     Bullet = Resources.Load("penetrate_bullet", typeof(GameObject)) as GameObject;
-                    if (Input.GetMouseButton(0))
-                    { SingleBulletShot(); m_nextfire = 0; }
+                    if (WeaponCheckRange())
+                    { SingleBulletShot(); m_nextfire = 0;  }
                 }
                 if (AttackType == 3)
                 {
                     Bullet = Resources.Load("bouncing_bullet", typeof(GameObject)) as GameObject;
-                    if (Input.GetMouseButton(0))
-                    { SingleBulletShot(); m_nextfire = 0; }
-
+                    if (WeaponCheckRange())
+                    { SingleBulletShot(); m_nextfire = 0;  }
                 }
                 if (AttackType == 4)
                 {
                     Bullet = Resources.Load("throwing_bullet", typeof(GameObject)) as GameObject;
-                    if (Input.GetMouseButton(0))
-                    { SingleBulletShot(); m_nextfire = 0; }
+                    if (WeaponCheckRange())
+                    { SingleBulletShot(); m_nextfire = 0; ; }
                 }
+            }
+                ///遠程扣武器
+                bool WeaponCheckRange()
+            {
+                if (GetComponent<Character_Status>().characterWeaponRange >= 10)
+                {
+                    GetComponent<Character_Status>().characterWeaponRange -= 10;
+                    return true;
+                }
+                else
+                { return false; }
             }
             if (AttackForm == 1)
             {
@@ -168,7 +178,7 @@ public class bullet_shoot : MonoBehaviour
                 {
                     firerate = 0.1f;
                     Bullet = Resources.Load("swipe_melee", typeof(GameObject)) as GameObject;
-                    if (Input.GetMouseButton(0))
+                    if (WeaponCheckMelee())
                     { MutipleBulletShot5(); m_nextfire = 0; }
                 }
                 //melee penetrate
@@ -176,7 +186,7 @@ public class bullet_shoot : MonoBehaviour
                 {
                     firerate = 0.5f;
                     Bullet = Resources.Load("penetrate_melee", typeof(GameObject)) as GameObject;
-                    if (Input.GetMouseButton(0))
+                    if (WeaponCheckMelee())
                     { SingleBulletShot(); m_nextfire = 0; }
                 }
 
@@ -185,7 +195,7 @@ public class bullet_shoot : MonoBehaviour
                 {
                     firerate = 0.1f;
                     Bullet = Resources.Load("bouncing_melee", typeof(GameObject)) as GameObject;
-                    if (Input.GetMouseButton(0))
+                    if (WeaponCheckMelee())
                     { SingleBulletShot(); m_nextfire = 0; }
                 }
 
@@ -194,12 +204,23 @@ public class bullet_shoot : MonoBehaviour
                 {
                     firerate = 0.1f;
                     Bullet = Resources.Load("throwing_melee", typeof(GameObject)) as GameObject;
-                    if (Input.GetMouseButton(0))
+                    if (WeaponCheckMelee())
                     { SingleBulletShot(); m_nextfire = 0; }
                 }
-
+                ///進戰扣武器
+                bool WeaponCheckMelee()
+                {
+                    if (GetComponent<Character_Status>().characterWeaponMelee >= 10)
+                    {
+                        GetComponent<Character_Status>().characterWeaponMelee -= 10;
+                        return true;
+                    }
+                    else
+                    { return false; }
+                }
 
             }
+
         }
     }
 }

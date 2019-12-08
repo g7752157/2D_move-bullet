@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3438441089554972167}
   - component: {fileID: 3438441089554972166}
   - component: {fileID: 3438441089554972220}
-  - component: {fileID: 3438441089554972219}
   m_Layer: 0
   m_Name: ENEMY
   m_TagString: Enemy
@@ -115,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyMaxHp: 2
   EnemyHp: 10
+  EnemyAtk: 5
   EnemyElementType: 1
 --- !u!114 &3438441089554972166
 MonoBehaviour:
@@ -154,44 +154,16 @@ MonoBehaviour:
   playerUnit: {fileID: 0}
   player: {fileID: 0}
   begin: {x: 0, y: 0, z: 0}
-  wanderRadius: 0
-  chaseRadius: 0
+  wanderRadius: 10
+  chaseRadius: 4
   defend: 0
-  walkSpeed: 0
-  runSpeed: 0
-  turnSpeed: 0
+  walkSpeed: 2
+  runSpeed: 2
+  turnSpeed: 1
   currentState: 0
   actWeight:
   - 3000
   - 4000
   actResttime: 0
-  lastAct: 0
-  self: {fileID: 0}
---- !u!114 &3438441089554972219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3438441089554972165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0dd49b8eeaeafe4cb013a6d7455bc7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerUnit: {fileID: 0}
-  player: {fileID: 0}
-  begin: {x: 0, y: 0, z: 0}
-  wanderRadius: 4.05
-  chaseRadius: 3.99
-  defend: 4.09
-  walkSpeed: 1
-  runSpeed: 2.61
-  turnSpeed: 1.98
-  currentState: 0
-  actWeight:
-  - 3000
-  - 4000
-  actResttime: 3.06
   lastAct: 0
   self: {fileID: 0}

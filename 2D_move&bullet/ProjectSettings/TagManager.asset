@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Wall
   - GroundEnemy
+  - character
   layers:
   - Default
   - TransparentFX
